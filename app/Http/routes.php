@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return AdvancedELOQUENT\Book::all();
+   // return AdvancedELOQUENT\Book::all();
+
+return 'HOLA';
+
+
 });
 
 /*
