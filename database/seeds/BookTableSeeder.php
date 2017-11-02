@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Seeder;
 use AdvancedELOQUENT\Book;
-
 class BookTableSeeder extends Seeder
 {
     /**
