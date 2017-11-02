@@ -12,11 +12,21 @@
 */
 
 Route::get('/', function () {
-    return AdvancedELOQUENT\Book::all();
-
+    $books= AdvancedELOQUENT\Book::get();
+    return view('destroy',compact('books'));
 
     
 });
+
+
+Route::delete('destroy', function(Illuminate\Http\Request $request) {
+	$ids = $request->get('ids');
+	if(count($ids)){
+		AdvancedELOQUENT\Book::destroy($ids);
+	}
+	return back();
+});
+
 
 /*
 |--------------------------------------------------------------------------
