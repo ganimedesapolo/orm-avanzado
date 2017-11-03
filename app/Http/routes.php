@@ -10,14 +10,18 @@
 |
 */
 Route::get('/', function () {
-	$users= AdvancedELOQUENT\User::all();
-    return view('manytomany',compact('users'));  
- });
+	$users = AdvancedELOQUENT\User::all();
+	return view('manytomany.index', compact('users'));
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
+
+
+
+
 | This route group applies the "web" middleware group to every route
 | it contains. The "web" middleware group is defined in your HTTP
 | kernel and includes session state, CSRF protection, and more.
@@ -26,3 +30,17 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+
+
+
+Route::get('edit-manytomany/{user_id}', [
+	'as' 	=> 'getEdit',
+	'uses' 	=> 'UserController@getEditManyToMany'
+]);
+
+
+Route::put('put-manytomany/{user_id}', [
+	'as' 	=> 'putEdit',
+	'uses' 	=> 'UserController@putEditManyToMany'
+]);
