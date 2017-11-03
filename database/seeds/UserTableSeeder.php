@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Seeder;
 use AdvancedELOQUENT\User;
-
 class UserTableSeeder extends Seeder
 {
     /**
