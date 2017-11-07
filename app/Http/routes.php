@@ -9,10 +9,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
-	$users = AdvancedELOQUENT\User::all();
-	return view('manytomany.index', compact('users'));
-});
+// Route::get('/', function () {
+// 	$users = AdvancedELOQUENT\User::all();
+// 	return view('manytomany.index', compact('users'));
+// });
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -22,11 +22,21 @@ Route::get('/', function () {
 
 
 
+
 | This route group applies the "web" middleware group to every route
 | it contains. The "web" middleware group is defined in your HTTP
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+
+Route::get('/', function () {
+	$users = DB::table('users')
+		->select('name as user_name', 'email as user_email')
+		->get();
+	return view('querybuilder.index', compact('users'));
+});
+
+
 Route::group(['middleware' => ['web']], function () {
     //
 });
