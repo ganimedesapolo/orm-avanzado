@@ -9,51 +9,34 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-// Route::get('/', function () {
-// 	$users = AdvancedELOQUENT\User::all();
-// 	return view('manytomany.index', compact('users'));
-// });
+use AdvancedELOQUENT\Exam;
+use AdvancedELOQUENT\User;
+
+
+Route::get('/', function () {
+	$user = User::find('1');
+	echo $user->name;
+	foreach ($user->exams as $exam) {
+		echo 
+			'<li>' .
+			$exam->title.
+			' Nota '.$exam->pivot->score.
+		    ' Fecha '.$exam->pivot->created_at.
+			'</li>';
+	}
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
-
-
-
-
-
 | This route group applies the "web" middleware group to every route
 | it contains. The "web" middleware group is defined in your HTTP
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
-Route::get('/', function () {
-	$books = DB::table('categories')
-		->join('books', 'categories.id', '=', 'books.category_id')
-		->where('books.status', 'public')
-		->select('categories.name as category', 'books.title', 'books.description')
-		->get();
-
-    	
-	return view('querybuilder.index', compact('books'));
-});
-
 Route::group(['middleware' => ['web']], function () {
     //
 });
-
-
-
-
-Route::get('edit-manytomany/{user_id}', [
-	'as' 	=> 'getEdit',
-	'uses' 	=> 'UserController@getEditManyToMany'
-]);
-
-
-Route::put('put-manytomany/{user_id}', [
-	'as' 	=> 'putEdit',
-	'uses' 	=> 'UserController@putEditManyToMany'
-]);
