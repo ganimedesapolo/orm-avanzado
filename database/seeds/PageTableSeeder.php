@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Database\Seeder;
-class DatabaseSeeder extends Seeder
+use AdvancedELOQUENT\Page;
+class PageTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -9,7 +10,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PageTableSeeder::class);
-        $this->call(PostTableSeeder::class);
+        factory(Page::class, 10)->create();
     }
 }

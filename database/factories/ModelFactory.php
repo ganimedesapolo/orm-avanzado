@@ -17,17 +17,15 @@ $factory->define(AdvancedELOQUENT\User::class, function (Faker\Generator $faker)
         'remember_token' => str_random(10),
     ];
 });
-$factory->define(AdvancedELOQUENT\Book::class, function (Faker\Generator $faker){
+$factory->define(AdvancedELOQUENT\Page::class, function (Faker\Generator $faker){
     return [
-        'title' => $faker->name,
-        'description' => $faker->text,
-        'status' => $faker->randomElement(['public', 'draft']),
-        'category_id' => $faker->randomElement([1,2,3]),
-        'user_id' => rand(1,10),
+        'name' => $faker->name,
+        'body' => $faker->text,
     ];
 });
-$factory->define(AdvancedELOQUENT\Exam::class, function (Faker\Generator $faker){
+$factory->define(AdvancedELOQUENT\Post::class, function (Faker\Generator $faker){
     return [
         'title' => $faker->name,
+        'body' => $faker->text,
     ];
 });

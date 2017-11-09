@@ -9,12 +9,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use AdvancedELOQUENT\Book;
+use AdvancedELOQUENT\User;
+use AdvancedELOQUENT\Page;
 Route::get('/', function () 
 {
-	$books = Book::with('category', 'user')->get();
-	//dd($books);
-	return view('home', compact('books'));
+	$page = Page::find(11);
+	echo $page->name;
+	foreach($page->comments as $comment){
+		echo '<li>' . $comment->body . '</li>';
+	}
 });
 /*
 |--------------------------------------------------------------------------
