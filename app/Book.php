@@ -5,14 +5,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Book extends Model
 {
     use SoftDeletes;
-    //relación belongsTo
-    public function category(){
+    //relación belongsTo, pertenece a una categoría...
+    public function category()
+    {
     	return $this->belongsTo(Category::class);
     }
-
-
-     public function users(){
-    	return $this->belongsToMany(User::class);
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
     }
-
 }

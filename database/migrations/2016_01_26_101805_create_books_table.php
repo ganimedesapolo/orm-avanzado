@@ -13,12 +13,16 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('description');
-            $table->enum('status',['public','draft'])->default('draft');
+            $table->enum('status', ['public', 'draft'])->default('draft');
             $table->softDeletes();  //deleted_at
             $table->timestamps(); //created_at updated_at
             $table->foreign('category_id')->references('id')->on('categories')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
