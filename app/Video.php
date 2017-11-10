@@ -1,7 +1,7 @@
 <?php
 namespace AdvancedELOQUENT;
 use Illuminate\Database\Eloquent\Model;
-class Post extends Model
+class Video extends Model
 {
     protected $fillable = ['title', 'body'];
     public function tags()
